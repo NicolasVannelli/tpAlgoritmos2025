@@ -4,12 +4,11 @@ import os
 # Función para ocultar contraseña con asteriscos
 def input_con_asteriscos(prompt=''):
     print(prompt, end='', flush=True)
-    password = ''
+    password = ''#ch
     iniciarPrograma = True
     while iniciarPrograma:
         ch = msvcrt.getch()
-        if ch in (b'\r', b'\n'):  # Enter
-            print()
+        if ch == b'\r' or ch == b'\n':
             iniciarPrograma = False
         else:
                 password += ch.decode('utf-8')
