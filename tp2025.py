@@ -1,10 +1,46 @@
 import msvcrt
 import os
+
+""" 
+                                        Iniciacion de variables
+password->string
+iniciarPrograma->bool
+ch->string
+command->string
+usuarioAdmin->string
+constraseñaAdmin->string
+novedad1->string
+novedad2->string
+novedad3->string
+intentos->int
+usuario->string
+contraseña->string
+menuAdministrador->bool
+linea->string
+opcion->int
+gestionAerolineas->bool
+nombre->string
+codigo->string
+descripcion->string
+pais->string
+seguir->bool
+arg->int
+bra->int
+chi->int
+continuar->string
+pais_mayor->string
+mayor_cantidad->int
+pais_menor->string
+menor_cantidad->int
+gestionNovedades->bool
+codigo->string
+nuevo_texto->string
+"""
             #Inicio de funciones esteticas
 # Función para ocultar contraseña con asteriscos
 def input_con_asteriscos(prompt=''):
     print(prompt, end='', flush=True)
-    password = ''#ch
+    password = ''
     iniciarPrograma = True
     while iniciarPrograma:
         ch = msvcrt.getch()
@@ -17,8 +53,10 @@ def input_con_asteriscos(prompt=''):
 #Función para limpiar la consola
 def limpiar():
     command = 'limpiar'
-    if os.name in ('nt', 'dos'):
+    if os.name == 'nt':
         command = 'cls'
+    else:
+        command = 'clear'#Por si utiliza max o linux
     os.system(command)
 
 #Para la despedida
@@ -44,10 +82,11 @@ def login():
         if usuario == usuarioAdmin and contraseña == constraseñaAdmin:
             limpiar()
             menu_administrador()
+            intentos=3
         else:
             print("Usuario o contraseña incorrectos.")
             intentos += 1
-    print("Demasiados intentos. El sistema se cerrará.")
+    print("El sistema se cerrará, hasta luego!.")
 
 # Menú principal del administrador
 def menu_administrador():
@@ -60,32 +99,32 @@ def menu_administrador():
         print("4. Reportes")
         print("5. Salir")
 
-        opcion = input("Seleccione una opción: ")
+        opcion = int(input("Seleccione una opción: "))
 
-        if opcion == "1":
+        if opcion == 1:
             limpiar()
             gestion_aerolineas()
-        elif opcion == "2":
+        elif opcion == 2:
             limpiar()
             print("En construcción…")
-            input("Presione cualquier tecla para volver al menú anterior.")
+            input("Presione enter para volver al menú anterior.")
             limpiar()
-        elif opcion == "3":
+        elif opcion == 3:
             limpiar()
             gestion_novedades()
-        elif opcion == "4":
+        elif opcion == 4:
             limpiar()
             print("En construcción…")
-            input("Presione cualquier tecla para volver al menú anterior.")
+            input("Presione enter para volver al menú anterior.")
             limpiar()
-        elif opcion == "5":
+        elif opcion == 5:
             limpiar()
             print("Saliendo del sistema.")
             menuAdministrador= False
         else:
             limpiar()
             print("Opción inválida.")
-            input("Presione cualquier tecla para volver al menú anterior.")
+            input("Presione enter para volver al menú anterior.")
             limpiar()
 
 # Gestión de aerolíneas
@@ -98,22 +137,22 @@ def gestion_aerolineas():
         print("3. Eliminar Aerolínea")
         print("4. Volver")
 
-        opcion = input("Seleccione una opción: ")
+        opcion = int(input("Seleccione una opción: "))
 
-        if opcion == "1":
+        if opcion == 1:
             limpiar()
             crear_aerolineas()
-        elif opcion == "2":
+        elif opcion == 2:
             limpiar()
             print("La opción 2 está en construcción")
             input("Presione enter para volver al menú anterior.")
             limpiar()
-        elif opcion == "3":
+        elif opcion == 3:
             limpiar()
             print("La opción 3 está en construcción")
             input("Presione enter para volver al menú anterior.")
             limpiar()
-        elif opcion == "4":
+        elif opcion == 4:
             limpiar()
             gestionAerolineas = False
         else:
@@ -174,7 +213,7 @@ def crear_aerolineas():
         menor_cantidad=chi
     print(f"\nPaís con mayor cantidad de aerolíneas: {pais_mayor} con {mayor_cantidad} aerolinea/s ")
     print(f"País con menor cantidad de aerolíneas: {pais_menor} con {menor_cantidad} aerolinea/s")
-    input("Presione cualquier tecla para volver al menú anterior.")
+    input("Presione enter para volver al menú anterior.")
     limpiar()
 # Gestión de novedades
 def gestion_novedades():
@@ -192,20 +231,21 @@ def gestion_novedades():
         if opcion == "a" or opcion == "c":
             limpiar()
             print("En construcción…")
-            input("Presione cualquier tecla para volver al menú anterior.")
+            input("Presione enter para volver al menú anterior.")
             limpiar()
         elif opcion == "b":
             modificar_novedad()
         elif opcion == "d":
             ver_novedades()
-            input("Presione cualquier tecla para continuar.")
+            input("Presione enter para continuar.")
             limpiar()
         elif opcion == "e":
             gestionNovedades = False
+            limpiar()
         else:
             limpiar()
             print("Opción inválida.")
-            input("Presione cualquier tecla para volver al menú anterior.")
+            input("Presione enter para volver al menú anterior.")
 
 # Modificar novedad
 def modificar_novedad():
@@ -217,22 +257,22 @@ def modificar_novedad():
         novedad1 = nuevo_texto
         limpiar()
         print("Novedad modificada correctamente.")
-        input("Presione cualquier tecla para volver al menú anterior.")
+        input("Presione enter para volver al menú anterior.")
     elif codigo == "N2":
         nuevo_texto=(input("Ingrese el nuevo texto para la novedad 2: "))
         novedad2 = nuevo_texto
         limpiar()
         print("Novedad modificada correctamente.")
-        input("Presione cualquier tecla para volver al menú anterior.")
+        input("Presione enter para volver al menú anterior.")
     elif codigo == "N3":
         nuevo_texto=(input("Ingrese el nuevo texto para la novedad 3: "))
         novedad3 = nuevo_texto
         limpiar()
         print("Novedad modificada correctamente.")
-        input("Presione cualquier tecla para volver al menú anterior.")
+        input("Presione enter para volver al menú anterior.")
     else:
         print("Código de novedad no encontrado.")
-        input("Presione cualquier tecla para volver al menú anterior.")
+        input("Presione enter para volver al menú anterior.")
 
 # Ver novedades
 def ver_novedades():
